@@ -1,0 +1,21 @@
+# Keep the repository in LF regardless of the workstation, so a Windows checkout and a Linux CI
+# runner produce the same bytes and the same diffs.
+* text=auto eol=lf
+
+# Gradle's POSIX launcher must stay executable and must not be line-ending converted.
+gradlew text eol=lf
+
+# Binary or generated content: never touch it, never diff it as text.
+*.jar binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.apk binary
+*.aab binary
+*.keystore binary
+*.jks binary
+*.p12 binary
+
+# Generated files that would otherwise flood a review.
+app/schemas/** linguist-generated=true

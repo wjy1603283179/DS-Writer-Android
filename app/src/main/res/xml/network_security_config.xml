@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Network security policy.
+
+  DS Writer ships no endpoint, so there is no vendor host to pin. The HTTPS rule is therefore
+  expressed as a property of the address class rather than a hostname, and it is enforced in one
+  place: app.dswriter.domain.settings.BaseUrlValidator, which accepts http:// only for private,
+  loopback, and link-local addresses and requires https:// for every public host.
+
+  This file cannot express that rule itself. An Android network security config matches hostnames,
+  and a private address range is not a hostname, so the base configuration permits cleartext and
+  the range check above is what actually gates it. Settings also shows a warning whenever a
+  plain-HTTP address is in use.
+
+  Narrowing the base configuration to an explicit host allowlist becomes possible only if the app
+  ships a fixed endpoint again, which it deliberately does not.
+-->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+</network-security-config>

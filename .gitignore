@@ -1,0 +1,30 @@
+*.iml
+.gradle/
+/local.properties
+/.idea/
+/.kotlin/
+**/build/
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Signing material must never enter the repository.
+*.jks
+*.keystore
+*.p12
+secrets.properties
+signing.properties
+
+# Local build output, exports, and scratch files.
+*.apk
+*.aab
+*.apk.idsig
+*.idsig
+*.keystore.bak
+*.bak
+*.orig
+*.log
+
+# Editor and OS noise.
+.DS_Store
+Thumbs.db
